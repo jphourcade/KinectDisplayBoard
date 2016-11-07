@@ -1,0 +1,482 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{69BB0E72-9FA9-43B7-9673-1BCB6F7F3877}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Samples.Kinect.ControlsBasics</RootNamespace>
+    <AssemblyName>KinectBoard</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <HockeyAppResourceId>1c1bf08cdf5840d4886a4bcab5781949</HockeyAppResourceId>
+    <PublishUrl>D:\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\Kinect.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutputPath>$(BinDir)$(PlatformTarget).$(Configuration)\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>97789D2E69777C3B2232FA531260A62BBAA1C5B0</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>KinectBoard_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Fizzler, Version=0.1.15619.0, Culture=neutral, PublicKeyToken=4ebff4844e382110, processorArchitecture=MSIL">
+      <HintPath>packages\Fizzler.1.0.0\lib\net35\Fizzler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fizzler.Systems.HtmlAgilityPack, Version=0.1.15619.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Fizzler.Systems.HtmlAgilityPack.1.0.0\lib\net35\Fizzler.Systems.HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MaterialDesignColors.1.1.3\lib\net45\MaterialDesignColors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.1.0.657, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MaterialDesignThemes.2.1.0.657\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Effects, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Kinect">
+      <HintPath>$(KINECTSDK20_DIR)Assemblies\Microsoft.Kinect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Kinect.Wpf.Controls">
+      <HintPath>$(KINECTSDK20_DIR)\Redist\WpfControls\Microsoft.Kinect.Wpf.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="WpfAnimatedGif, Version=1.4.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\WpfAnimatedGif.1.4.14\lib\net\WpfAnimatedGif.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Helper Classes\BBCNews.cs" />
+    <Compile Include="Helper Classes\BongoData.cs" />
+    <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Helper Classes\CNETNews.cs" />
+    <Compile Include="Helper Classes\CSEvents.cs" />
+    <Compile Include="DataModel\DataSource.cs" />
+    <Compile Include="HandPointers\HandInScreenEngagementModel.cs" />
+    <Compile Include="Helper Classes\CSPeople.cs" />
+    <Compile Include="Helper Classes\APNews.cs" />
+    <Compile Include="Helper Classes\LoadingControl.xaml.cs">
+      <DependentUpon>LoadingControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helper Classes\MainWindowBongoHelper.cs" />
+    <Compile Include="Helper Classes\MainWindowCSHelper.cs" />
+    <Compile Include="Helper Classes\MainWindowSlidesHelper.cs" />
+    <Compile Include="Helper Classes\MainWindowWeatherHelper.cs" />
+    <Compile Include="Helper Classes\TriviaData.cs" />
+    <Compile Include="Pages\BongoPage.xaml.cs">
+      <DependentUpon>BongoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CSEvents.xaml.cs">
+      <DependentUpon>CSEvents.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EngagementSettings.xaml.cs">
+      <DependentUpon>EngagementSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HandPointers\HandOverHeadEngagementModel.cs" />
+    <Compile Include="Pages\FunPage.xaml.cs">
+      <DependentUpon>FunPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\HelpControl.xaml.cs">
+      <DependentUpon>HelpControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\KinectPointerPointSample.xaml.cs">
+      <DependentUpon>KinectPointerPointSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MapsPage.xaml.cs">
+      <DependentUpon>MapsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PeoplePage.xaml.cs">
+      <DependentUpon>PeoplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ScrollViewerSample.xaml.cs">
+      <DependentUpon>ScrollViewerSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WeatherPage.xaml.cs">
+      <DependentUpon>WeatherPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SelectionDisplay.xaml.cs">
+      <DependentUpon>SelectionDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helper Classes\WeatherData.cs" />
+    <Page Include="Common\StandardStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HandPointers\HandPointerStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Helper Classes\LoadingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Pages\BongoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CSEvents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EngagementSettings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\FunPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\HelpControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\KinectPointerPointSample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\MapsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PeoplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ScrollViewerSample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\WeatherPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Properties\DesignTimeResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
+    </Page>
+    <Page Include="SelectionDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="KinectBoard_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Kinect.ico" />
+    <Resource Include="Images\Logo.png" />
+    <Resource Include="Assets\DarkGray.png" />
+    <Resource Include="Assets\LightGray.png" />
+    <Resource Include="Assets\MediumGray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="HandPointers\HighlightRectangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\operahouse.jpg" />
+    <Resource Include="Images\sydney.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\CursorSpriteSheetPurple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\CursorSpriteSheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\wundergroundLogo_4c_horz.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\BusLogoFront.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\WeatherIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\clas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\uiowa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\wundergroundLogo_4c_rev_horz.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\People Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\WeatherIcons\chanceflurries.png" />
+    <Resource Include="Images\WeatherIcons\chancerain.png" />
+    <Resource Include="Images\WeatherIcons\chancesleet.png" />
+    <Resource Include="Images\WeatherIcons\chancesnow.png" />
+    <Resource Include="Images\WeatherIcons\chancetstorms.png" />
+    <Resource Include="Images\WeatherIcons\clear.png" />
+    <Resource Include="Images\WeatherIcons\cloudy.png" />
+    <Resource Include="Images\WeatherIcons\eclipse.png" />
+    <Resource Include="Images\WeatherIcons\flurries.png" />
+    <Resource Include="Images\WeatherIcons\fog.png" />
+    <Resource Include="Images\WeatherIcons\hazy.png" />
+    <Resource Include="Images\WeatherIcons\mostlycloudy.png" />
+    <Resource Include="Images\WeatherIcons\mostlysunny.png" />
+    <Resource Include="Images\WeatherIcons\na.png" />
+    <Resource Include="Images\WeatherIcons\nt_chanceflurries.png" />
+    <Resource Include="Images\WeatherIcons\nt_chancerain.png" />
+    <Resource Include="Images\WeatherIcons\nt_chancesleet.png" />
+    <Resource Include="Images\WeatherIcons\nt_chancesnow.png" />
+    <Resource Include="Images\WeatherIcons\nt_chancestorms %281%29.png" />
+    <Resource Include="Images\WeatherIcons\nt_chancestorms.png" />
+    <Resource Include="Images\WeatherIcons\nt_chancetstorms %281%29.png" />
+    <Resource Include="Images\WeatherIcons\nt_chancetstorms.png" />
+    <Resource Include="Images\WeatherIcons\nt_clear.png" />
+    <Resource Include="Images\WeatherIcons\nt_cloudy.png" />
+    <Resource Include="Images\WeatherIcons\nt_flurries.png" />
+    <Resource Include="Images\WeatherIcons\nt_fog.png" />
+    <Resource Include="Images\WeatherIcons\nt_hazy.png" />
+    <Resource Include="Images\WeatherIcons\nt_mostlycloudy.png" />
+    <Resource Include="Images\WeatherIcons\nt_mostlysunny.png" />
+    <Resource Include="Images\WeatherIcons\nt_overcast.png" />
+    <Resource Include="Images\WeatherIcons\nt_partlycloudy.png" />
+    <Resource Include="Images\WeatherIcons\nt_partlysunny.png" />
+    <Resource Include="Images\WeatherIcons\nt_rain.png" />
+    <Resource Include="Images\WeatherIcons\nt_sleet.png" />
+    <Resource Include="Images\WeatherIcons\nt_snow.png" />
+    <Resource Include="Images\WeatherIcons\nt_sunny.png" />
+    <Resource Include="Images\WeatherIcons\nt_tstorms.png" />
+    <Resource Include="Images\WeatherIcons\overcast.png" />
+    <Resource Include="Images\WeatherIcons\partlycloudy.png" />
+    <Resource Include="Images\WeatherIcons\partlysunny.png" />
+    <Resource Include="Images\WeatherIcons\rain.png" />
+    <Resource Include="Images\WeatherIcons\sleet.png" />
+    <Resource Include="Images\WeatherIcons\snow.png" />
+    <Resource Include="Images\WeatherIcons\sunny.png" />
+    <Resource Include="Images\WeatherIcons\tstorms.png" />
+    <Resource Include="Images\WeatherIcons\unknown.png" />
+    <Resource Include="Images\WeatherIcons\windy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\NewsIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\mapIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Maps\basement.jpg" />
+    <Resource Include="Images\Maps\groundFloor.jpg" />
+    <Resource Include="Images\Maps\floor 1.jpg" />
+    <Resource Include="Images\Maps\floor 2.jpg" />
+    <Resource Include="Images\Maps\floor 3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\spin.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HelpImages\move.png" />
+    <Resource Include="Images\HelpImages\push.png" />
+    <Resource Include="Images\HelpImages\pushAct.png" />
+    <Resource Include="Images\HelpImages\scroll.png" />
+    <Resource Include="Images\HelpImages\start.png" />
+    <Resource Include="Assets\DailyFunIcon.png" />
+    <Resource Include="Assets\helpIcon.png" />
+    <Content Include="Assets\Interview Questions.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

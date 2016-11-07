@@ -1,0 +1,269 @@
+﻿<UserControl x:Class="Microsoft.Samples.Kinect.ControlsBasics.WeatherPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:gif="http://wpfanimatedgif.codeplex.com" 
+      mc:Ignorable="d"
+      Margin="10,10,10,10"
+      xmlns:k="http://schemas.microsoft.com/kinect/2014"
+      xmlns:loading="clr-namespace:Microsoft.Samples.Kinect.ControlsBasics.Helper_Classes"
+     >
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Page title -->
+        <TextBlock Grid.Row="0" Style="{StaticResource HeaderStyle}" x:Name="weatherPageTitle" Margin="0 10 0 10" Text="Weather" FontSize="36" FontWeight="UltraBold" Foreground="#FFEEEEEE" />
+        <Image x:Name="WULogo" Grid.Row="0" Source="../Images/wundergroundLogo_4c_rev_horz.jpg" Width="100px" VerticalAlignment="Center"  HorizontalAlignment="Right"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.6*" />
+                <ColumnDefinition Width="0.4*" />
+            </Grid.ColumnDefinitions>
+            
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="0.7*"/>
+                    <RowDefinition Height="0.3*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Style="{StaticResource HeaderStyle}" x:Name="Forecast" Text="Forecast" Margin="10,10,0,10" Foreground="#FFFFC000"/>
+                <Grid Grid.Row="1" x:Name="WeatherCards" Margin="10,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="0.5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.20*"/>
+                        <ColumnDefinition Width="0.20*"/>
+                        <ColumnDefinition Width="0.20*"/>
+                        <ColumnDefinition Width="0.20*"/>
+                        <ColumnDefinition Width="0.20*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Row="0" 
+                            Grid.Column="0"
+                            Click="MoreDetailsClick"
+                            BorderBrush="{x:Null}"
+                            Height="Auto"
+                            VerticalAlignment="Stretch"
+                            Width="Auto"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            Margin="5"
+                            x:Name="wb0"
+                            Style="{StaticResource KinectTileButton}">
+                        <materialDesign:Card Background="#FF424242" VerticalAlignment="Center">
+                            <StackPanel x:Name="weather1" VerticalAlignment="Bottom" >
+                                <TextBlock x:Name="day1" TextDecorations="{x:Null}" TextAlignment="Center" FontSize="20" Foreground="#FFFFC000" VerticalAlignment="Center"></TextBlock>
+                                <TextBlock x:Name="day1Num" TextAlignment="Center" Foreground="White"/>
+                                <Image x:Name="weatherIcon1" Width="50px" Height="50px"/>
+                                <TextBlock x:Name="Temp1" FontSize="20" TextAlignment="Center" Foreground="White"></TextBlock>
+                            </StackPanel>
+                        </materialDesign:Card>
+                    </Button>
+                    <Button Grid.Row="0" Grid.Column="1"  Click="MoreDetailsClick"
+                            BorderBrush="{x:Null}"
+                            Height="Auto"
+                            VerticalAlignment="Stretch"
+                            Width="Auto"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            Margin="5"
+                            x:Name="wb1"
+                            Style="{StaticResource KinectTileButton}">
+                        <materialDesign:Card  Background="#FF424242" VerticalAlignment="Center">
+                            <StackPanel x:Name="weather2">
+                                <TextBlock x:Name="day2" TextDecorations="{x:Null}" TextAlignment="Center" FontSize="20" Foreground="#FFFFC000"></TextBlock>
+                                <TextBlock x:Name="day2Num" TextAlignment="Center" Foreground="White"/>
+                                <Image x:Name="weatherIcon2" Width="50px" Height="50px"/>
+                                <TextBlock x:Name="Temp2" FontSize="20" TextAlignment="Center" Foreground="White"></TextBlock>
+                            </StackPanel>
+                        </materialDesign:Card>
+                    </Button>
+                    <Button Grid.Row="0" Grid.Column="2"  Click="MoreDetailsClick"
+                            BorderBrush="{x:Null}"
+                            Height="Auto"
+                            VerticalAlignment="Stretch"
+                            Width="Auto"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            Margin="5"
+                            x:Name="wb2"
+                            Style="{StaticResource KinectTileButton}">
+                        <materialDesign:Card  Background="#FF424242" VerticalAlignment="Center">
+                            <StackPanel x:Name="weather3">
+                                <TextBlock x:Name="day3" TextDecorations="{x:Null}" TextAlignment="Center" FontSize="20" Foreground="#FFFFC000"></TextBlock>
+                                <TextBlock x:Name="day3Num" TextAlignment="Center" Foreground="White"/>
+                                <Image x:Name="weatherIcon3" Width="50px" Height="50px"/>
+                                <TextBlock x:Name="Temp3" FontSize="20" TextAlignment="Center" Foreground="White"></TextBlock>
+                            </StackPanel>
+                        </materialDesign:Card>
+                    </Button>
+                    <Button Grid.Row="0" Grid.Column="3"  Click="MoreDetailsClick"
+                            BorderBrush="{x:Null}"
+                            Height="Auto"
+                            VerticalAlignment="Stretch"
+                            Width="Auto"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            Margin="5"
+                            x:Name="wb3"
+                            Style="{StaticResource KinectTileButton}">
+                        <materialDesign:Card  Background="#FF424242" VerticalAlignment="Center">
+                            <StackPanel x:Name="weather4">
+                                <TextBlock x:Name="day4" TextDecorations="{x:Null}" TextAlignment="Center" FontSize="20" Foreground="#FFFFC000"></TextBlock>
+                                <TextBlock x:Name="day4Num" TextAlignment="Center" Foreground="White"/>
+                                <Image x:Name="weatherIcon4" Width="50px" Height="50px"/>
+                                <TextBlock x:Name="Temp4" FontSize="20" TextAlignment="Center" Foreground="White"></TextBlock>
+                            </StackPanel>
+                        </materialDesign:Card>
+                    </Button>
+                    <Button Grid.Row="0" Grid.Column="4"  Click="MoreDetailsClick"
+                            BorderBrush="{x:Null}"
+                            Height="Auto"
+                            VerticalAlignment="Stretch"
+                            Width="Auto"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            Margin="5"
+                            x:Name="wb4"
+                            Style="{StaticResource KinectTileButton}">
+                        <materialDesign:Card  Background="#FF424242" VerticalAlignment="Center">
+                            <StackPanel x:Name="weather5">
+                                <TextBlock x:Name="day5" TextDecorations="{x:Null}" TextAlignment="Center" FontSize="20" Foreground="#FFFFC000"></TextBlock>
+                                <TextBlock x:Name="day5Num" TextAlignment="Center" Foreground="White"/>
+                                <Image x:Name="weatherIcon5" Width="50px" Height="50px"/>
+                                <TextBlock x:Name="Temp5" FontSize="20" TextAlignment="Center" Foreground="White"></TextBlock>
+                            </StackPanel>
+                        </materialDesign:Card>
+                    </Button>
+                    <Button Grid.Row="1" Grid.Column="0"  Click="MoreDetailsClick"
+                            BorderBrush="{x:Null}"
+                            Height="Auto"
+                            VerticalAlignment="Stretch"
+                            Width="Auto"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            Margin="5"
+                            x:Name="wb5"
+                            Style="{StaticResource KinectTileButton}">
+                        <materialDesign:Card  Background="#FF424242" VerticalAlignment="Center">
+                            <StackPanel x:Name="weather6" >
+                                <TextBlock x:Name="day6" TextDecorations="{x:Null}" TextAlignment="Center" FontSize="20" Foreground="#FFFFC000"></TextBlock>
+                                <TextBlock x:Name="day6Num" TextAlignment="Center" Foreground="White"/>
+                                <Image x:Name="weatherIcon6" Width="50px" Height="50px"/>
+                                <TextBlock x:Name="Temp6" FontSize="20" TextAlignment="Center" Foreground="White"></TextBlock>
+                            </StackPanel>
+                        </materialDesign:Card>
+                    </Button>
+                    <Button Grid.Row="1" Grid.Column="1"  Click="MoreDetailsClick"
+                            BorderBrush="{x:Null}"
+                            Height="Auto"
+                            VerticalAlignment="Stretch"
+                            Width="Auto"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            Margin="5"
+                            x:Name="wb6"
+                            Style="{StaticResource KinectTileButton}">
+                        <materialDesign:Card  Background="#FF424242" VerticalAlignment="Center">
+                            <StackPanel x:Name="weather7"  >
+                                <TextBlock x:Name="day7" TextDecorations="{x:Null}" TextAlignment="Center" FontSize="20" Foreground="#FFFFC000"></TextBlock>
+                                <TextBlock x:Name="day7Num" TextAlignment="Center" Foreground="White"/>
+                                <Image x:Name="weatherIcon7" Width="50px" Height="50px"/>
+                                <TextBlock x:Name="Temp7" FontSize="20" TextAlignment="Center" Foreground="White"></TextBlock>
+                            </StackPanel>
+                        </materialDesign:Card>
+                    </Button>
+                    <Button Grid.Row="1" Grid.Column="2"  Click="MoreDetailsClick"
+                            BorderBrush="{x:Null}"
+                            Height="Auto"
+                            VerticalAlignment="Stretch"
+                            Width="Auto"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            Margin="5"
+                            x:Name="wb7"
+                            Style="{StaticResource KinectTileButton}">
+                        <materialDesign:Card  Background="#FF424242" VerticalAlignment="Center">
+                            <StackPanel x:Name="weather8" >
+                                <TextBlock x:Name="day8" TextDecorations="{x:Null}" TextAlignment="Center" FontSize="20" Foreground="#FFFFC000"></TextBlock>
+                                <TextBlock x:Name="day8Num" TextAlignment="Center" Foreground="White"/>
+                                <Image x:Name="weatherIcon8" Width="50px" Height="50px"/>
+                                <TextBlock x:Name="Temp8" FontSize="20" TextAlignment="Center" Foreground="White"></TextBlock>
+                            </StackPanel>
+                        </materialDesign:Card>
+                    </Button>
+                    <Button Grid.Row="1" Grid.Column="3"  Click="MoreDetailsClick"
+                            BorderBrush="{x:Null}"
+                            Height="Auto"
+                            VerticalAlignment="Stretch"
+                            Width="Auto"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            Margin="5"
+                            x:Name="wb8"
+                            Style="{StaticResource KinectTileButton}">
+                        <materialDesign:Card  Background="#FF424242" VerticalAlignment="Center">
+                            <StackPanel x:Name="weather9">
+                                <TextBlock x:Name="day9" TextDecorations="{x:Null}" TextAlignment="Center" FontSize="20" Foreground="#FFFFC000"></TextBlock>
+                                <TextBlock x:Name="day9Num" TextAlignment="Center" Foreground="White"/>
+                                <Image x:Name="weatherIcon9" Width="50px" Height="50px"/>
+                                <TextBlock x:Name="Temp9" FontSize="20" TextAlignment="Center" Foreground="White"></TextBlock>
+                            </StackPanel>
+                        </materialDesign:Card>
+                    </Button>
+                    <Button Grid.Row="1" Grid.Column="4"  Click="MoreDetailsClick"
+                            BorderBrush="{x:Null}"
+                            Height="Auto"
+                            VerticalAlignment="Stretch"
+                            Width="Auto"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            Margin="5"
+                            x:Name="wb9"
+                            Style="{StaticResource KinectTileButton}">
+                        <materialDesign:Card  Background="#FF424242" VerticalAlignment="Center">
+                            <StackPanel x:Name="weather10">
+                                <TextBlock x:Name="day10" TextDecorations="{x:Null}" TextAlignment="Center" FontSize="20" Foreground="#FFFFC000"></TextBlock>
+                                <TextBlock x:Name="day10Num" TextAlignment="Center" Foreground="White"/>
+                                <Image x:Name="weatherIcon10" Width="50px" Height="50px"/>
+                                <TextBlock x:Name="Temp10" FontSize="20" TextAlignment="Center" Foreground="White"></TextBlock>
+                            </StackPanel>
+                        </materialDesign:Card>
+                    </Button>
+                </Grid>
+
+                    <StackPanel Grid.Row="2"  x:Name="MoreDetailWeather"  Margin="10,5">
+                        <TextBlock x:Name="moreDetailTitle" FontFamily="26" Foreground="#FFFFC000" >More Details</TextBlock>
+                        <TextBlock x:Name="moreDetailDayTitle" FontSize="25" TextDecorations="Underline" TextWrapping="Wrap" Foreground="White" />
+                        <TextBlock x:Name="moreDetailDayText" FontSize="25" TextDecorations="" FontStyle="Italic" TextWrapping="Wrap" Foreground="White"/>
+                        <TextBlock x:Name="moreDetailNightTitle" FontSize="25" TextDecorations="Underline" TextWrapping="Wrap" Foreground="White"/>
+                        <TextBlock x:Name="moreDetailNightText" FontSize="25" TextDecorations="" FontStyle="Italic" TextWrapping="Wrap" Foreground="White"/>
+                    </StackPanel>
+
+            </Grid>
+
+            <StackPanel Grid.Column="1">
+                <TextBlock x:Name="RadarTitle"  Style="{StaticResource HeaderStyle}" Text="Radar" Margin="10,10,0,10" Foreground="#FFFFC000"/>
+                <loading:LoadingControl x:Name="Loading"/>
+                <Image x:Name="RadarImage" Margin="0" Height="750" Width="750" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
