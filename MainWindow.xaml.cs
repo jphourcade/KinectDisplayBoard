@@ -64,7 +64,9 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             this.InitializeComponent();
 
             navService = NavigationService.GetNavigationService(this);
-            
+
+            HelpSlide.Visibility = Visibility.Collapsed;
+
             KinectRegion.SetKinectRegion(this, kinectRegion);
 
             App app = ((App)Application.Current);
@@ -202,10 +204,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             GetWeatherData();
             GetSlides();
         }
-
-        //TODO set Loading bars
-        //TODO photoshop maps
-        //TODO make bongo page better
+       
         //TODO DEBUG page timer
               
         /// <summary>

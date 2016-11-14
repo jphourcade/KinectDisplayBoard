@@ -79,14 +79,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KinectBoard.exe" size="4864496">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KinectBoard.exe" size="4885488">
       <assemblyIdentity name="KinectBoard" version="2.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>waB1D6RMBBWsCxhXS7ZN7l/0xWrZeBzB3cMPJgF0ta0=</dsig:DigestValue>
+        <dsig:DigestValue>MTBD+NasdE4OlGC2XT8tHeHroW+vGCf2CB8OGYHo+ZA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

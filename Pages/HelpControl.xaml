@@ -41,7 +41,7 @@
                 <ColumnDefinition Width="0.25*"/>
                 <ColumnDefinition Width="0.75*"/>
             </Grid.ColumnDefinitions>
-            <Image x:Name="selectImg" Grid.Row="0" Grid.Column="0" Source="../Images/HelpImages/push.png" HorizontalAlignment="Right"  VerticalAlignment="Bottom"/>
+            <Image x:Name="selectImg" Grid.Row="0" Grid.Column="0" Source="../Images/HelpImages/pushAct_1.png" HorizontalAlignment="Right"  VerticalAlignment="Bottom"/>
             <TextBlock Grid.Row="0" Grid.Column="1" FontSize="22" TextWrapping="Wrap" HorizontalAlignment="Left" Foreground="White">Line the cursor up with a button or menu, and push your hand forward in a smooth motion.</TextBlock>
             <Image x:Name="scrollImg" Grid.Row="1" Grid.Column="0" Source="../Images/HelpImages/scroll.png" HorizontalAlignment="Right"  VerticalAlignment="Bottom"/>
             <TextBlock Grid.Row="1" Grid.Column="1" FontSize="22" TextWrapping="Wrap" HorizontalAlignment="Left" Foreground="White">To scroll, make a fist when hovering over a scrollable item and move your closed hand.</TextBlock>

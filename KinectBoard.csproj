@@ -460,6 +460,7 @@
     <Resource Include="Assets\spin.gif" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\HelpImages\pushAct_1.png" />
     <Resource Include="Images\HelpImages\move.png" />
     <Resource Include="Images\HelpImages\push.png" />
     <Resource Include="Images\HelpImages\pushAct.png" />

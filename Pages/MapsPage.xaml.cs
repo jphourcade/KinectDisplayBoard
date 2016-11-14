@@ -18,20 +18,34 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
     /// </summary>
     public partial class MapsPage : UserControl
     {
+        public static int SavedDay = 999;
+        private static Dictionary<string, BitmapImage> slideImages = new Dictionary<string, BitmapImage>();
+        private Dictionary<string, string> titleTextDict = new Dictionary<string, string>()
+        {
+            { "Floor 1", "Map: Floor 1 (Entry Way)" },
+            { "Floor 2", "Map: Floor 2" },
+            { "Floor 3", "Map: Floor 3" },
+            { "Ground Floor", "Map: Ground Floor" },
+            { "Basement", "Map: Basement" }
+        };
+        public static string initMap = "Floor 1";
+
         public MapsPage()
         {
             InitializeComponent();
-            GetMaps();
-            
-            //MapImage.Source = slideImages["Floor 1"];
-            //MapTitle.Text = "Map: Floor 1";
+            GetMaps();             
         }
-
-        private static Dictionary<string, BitmapImage> slideImages = new Dictionary<string, BitmapImage>();
 
         private async void GetMaps()
         {
-            slideImages = await GetSlidesAsync();
+            if (DateTime.Today.Day != SavedDay)
+            {
+                SavedDay = DateTime.Today.Day;
+                slideImages = await GetSlidesAsync();
+            }
+            Loading.Visibility = Visibility.Collapsed;
+            MapImage.Source = slideImages[initMap];
+            MapTitle.Text = titleTextDict[initMap];
         }
         
         private void GetSlideURLs(object sender, ElapsedEventArgs e)
@@ -42,9 +56,9 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
         {
             Dictionary<string, string> linksDict = new Dictionary<string, string>()
             {
-                { "Floor 1", "https://cs.uiowa.edu/sites/cs.uiowa.edu/files/files/Floor3.png" },
+                { "Floor 1", "https://cs.uiowa.edu/sites/cs.uiowa.edu/files/files/floor1.png" },
                 { "Floor 2", "https://cs.uiowa.edu/sites/cs.uiowa.edu/files/files/Floor2.png" },
-                { "Floor 3", "https://cs.uiowa.edu/sites/cs.uiowa.edu/files/files/floor1.png" },
+                { "Floor 3", "https://cs.uiowa.edu/sites/cs.uiowa.edu/files/files/Floor3.png" },
                 { "Ground Floor", "https://cs.uiowa.edu/sites/cs.uiowa.edu/files/files/Ground.png" },
                 { "Basement", "https://cs.uiowa.edu/sites/cs.uiowa.edu/files/files/Basement.png" }
             };
@@ -52,7 +66,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             Dictionary<string, BitmapImage> images = await Task.Run(() =>
             {
                 Dictionary<string,BitmapImage> imgs = new Dictionary<string, BitmapImage>();
-                    var webClient = new WebClient();
+                var webClient = new WebClient();
                 Dictionary<string, string>.KeyCollection keyColl =  linksDict.Keys;
                 
                 foreach(string s in keyColl)
@@ -84,19 +98,21 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
         {
             RadioButton rb = (RadioButton)sender;
             MapImage.Source = slideImages[(string)rb.Content];
-            MapTitle.Text = "Map: " + (string)rb.Content;
+            MapTitle.Text = titleTextDict[(string)rb.Content];
         }
 
-        private void centerImageView_ManipulationStarting(object sender, System.Windows.Input.ManipulationStartingEventArgs e)
+
+        //Touch scaling code.  To be dealt with later
+        private void centerImageView_ManipulationStarting(object sender, ManipulationStartingEventArgs e)
         {
             e.ManipulationContainer = this;
             e.Handled = true;
         }
 
-        private void centerImageView_ManipulationDelta(object sender, System.Windows.Input.ManipulationDeltaEventArgs e)
+        private void centerImageView_ManipulationDelta(object sender, ManipulationDeltaEventArgs e)
         {
         // get current matrix of the element.
-         Matrix borderMatrix = ((System.Windows.Media.MatrixTransform)MapImage.RenderTransform).Matrix;
+         Matrix borderMatrix = ((MatrixTransform)MapImage.RenderTransform).Matrix;
             //determine if action is zoom or pinch
             var maxScale = Math.Max(e.DeltaManipulation.Scale.X, e.DeltaManipulation.Scale.Y);
             //check if not crossing minimum and maximum zoom limit

@@ -22,7 +22,6 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
         
         public static string staticTriviaQuestion;
         public static int SavedDay = 999;
-        public static Timer GetTimer;
         private static string staticInterviewQuestion;
         private static string staticFunFact;
         private static string staticCorrectAnswer;
@@ -52,7 +51,6 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
         private void SetApis(object sender, ElapsedEventArgs e)
         {
             SetApis();
-            Debug.WriteLine("HERE");
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)

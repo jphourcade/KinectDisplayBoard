@@ -10,6 +10,9 @@ using System.Text.RegularExpressions;
 using System.Windows.Media.Imaging;
 using WpfAnimatedGif;
 using System.Windows;
+using System.Diagnostics;
+using System.Data;
+using System.Windows.Controls.Primitives;
 
 namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
 {
@@ -18,11 +21,17 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
     /// </summary>
     public partial class PeoplePage : UserControl
     {
-         
+        private Regex firstFloor = new Regex("^[1][0-9][0-9].*MLH$");
+        private Regex secondFloor = new Regex("^[2][0-9][0-9].*MLH$");
+        private Regex thirdFloor = new Regex("^[3][0-9][0-9].*MLH$");
+        private Regex basementFloor = new Regex("^B[0-9][0-9]?.*MLH$");
+        private Regex groundFloor = new Regex("^[0-9][0-9]?.*MLH$");
+        
+
         public PeoplePage()
         {
             InitializeComponent();
-            GetPeopleList();
+            SetPeopleList();
 
             //BitmapImage bitmap = new BitmapImage();
             //bitmap.BeginInit();
@@ -35,15 +44,15 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
         /// <summary>
         /// Async method that waits for API call and then updates UI
         /// </summary>
-        private async void GetPeopleList()
+        private async void SetPeopleList()
         {
-            List<CSPeople> p = await ParseHttpPeopleAsync();
-            
-            Dispatcher.Invoke(DispatcherPriority.DataBind, new Action(delegate { PeopleGrid.DataContext = p; }));
-
+            List<CSPeople> peopleList = await ParseHttpPeopleAsync();
+            Dispatcher.Invoke(DispatcherPriority.DataBind, new Action(delegate { PeopleGrid.DataContext = peopleList; }));
             Loading.Visibility = Visibility.Collapsed;
+            
+           
         }
-
+        
         /// <summary>
         /// Async method that returns Parsed list of CSPeople
         /// </summary>
@@ -60,9 +69,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
                 var rows = doc.DocumentNode.SelectNodes("//table[contains(@class,'views-table')]//tr");
 
                 foreach (var tr in rows)
-                {
-
-                
+                {               
                     CSPeople person = new CSPeople();
                     foreach (var td in tr.ChildNodes)
                     {
@@ -92,9 +99,53 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
                 people.RemoveAll(person => blanksReg.IsMatch(person.Office));
                 
                 return people;
-            });
-            
+            });            
             return p;   
+        }
+
+        private string SetFloor(string innerText)
+        {
+            if (firstFloor.IsMatch(innerText))
+            {
+                return "Floor 1";
+            }
+            else if (secondFloor.IsMatch(innerText))
+            {
+                return "Floor 2";
+            }
+            else if (thirdFloor.IsMatch(innerText))
+            {
+                return "Floor 3";
+            }
+            else if (groundFloor.IsMatch(innerText))
+            {
+                return "Ground Floor";
+            }
+            else if (basementFloor.IsMatch(innerText))
+            {
+                return "Basement";
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private void Row_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DataGridCellsPresenter dataRow = (DataGridCellsPresenter)e.Source;
+            CSPeople person = (CSPeople)dataRow.DataContext;   
+            string office = Regex.Replace(person.Office, @"\s+", "");
+            string floor  = SetFloor(office);
+            if(floor != null)
+            {
+                MapsPage.initMap = floor;
+                navigationRegion.Content = Activator.CreateInstance(typeof(MapsPage));
+            }
+            else
+            {
+                MessageBox.Show("Office is not in Maclean Hall. Please tap 'OK' to remove");
+            }            
         }
     }
 }
