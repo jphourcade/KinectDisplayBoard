@@ -20,6 +20,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
     {
         public static int SavedDay = 999;
         private static Dictionary<string, BitmapImage> slideImages = new Dictionary<string, BitmapImage>();
+        public static string initMap = "Floor 1";
         private Dictionary<string, string> titleTextDict = new Dictionary<string, string>()
         {
             { "Floor 1", "Map: Floor 1 (Entry Way)" },
@@ -28,7 +29,6 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             { "Ground Floor", "Map: Ground Floor" },
             { "Basement", "Map: Basement" }
         };
-        public static string initMap = "Floor 1";
 
         public MapsPage()
         {
@@ -36,6 +36,9 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             GetMaps();             
         }
 
+        /// <summary>
+        /// Async method that gets and sets teh maps for maps page.
+        /// </summary>
         private async void GetMaps()
         {
             if (DateTime.Today.Day != SavedDay)
@@ -48,10 +51,20 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             MapTitle.Text = titleTextDict[initMap];
         }
         
+        /// <summary>
+        /// Helper method that is called by timer tick
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GetSlideURLs(object sender, ElapsedEventArgs e)
         {
             GetMaps();
         }
+
+        /// <summary>
+        /// Gets the maps and saves them in memory
+        /// </summary>
+        /// <returns>A dictionary containing floor title as key and image as value</returns>
         async Task<Dictionary<string, BitmapImage>> GetSlidesAsync()
         {
             Dictionary<string, string> linksDict = new Dictionary<string, string>()

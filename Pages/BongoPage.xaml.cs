@@ -139,7 +139,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
                         string colorString = "#FFFFFF";
                         if (bd.agency.Equals("cambus"))
                         {
-                            colorString = "#FFEB3B";
+                            colorString = "#FFFFC000";
                         }
                         else if (bd.agency.Equals("iowa-city"))
                         {

@@ -1,15 +1,15 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Threading;
 
 namespace Microsoft.Samples.Kinect.ControlsBasics
 {
+    /// <summary>
+    /// Helper class that is in charge of Bongo Data and code for MainWindow
+    /// </summary>
     public partial class MainWindow
     {
         private static Timer bongoSwapTimer;
@@ -150,7 +150,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                     string colorString = "#FFFFFF";
                     if (bd.agency.Equals("cambus"))
                     {
-                        colorString = "#FFEB3B";
+                        colorString = "#FFFFC000";
                     }
                     else if (bd.agency.Equals("iowa-city"))
                     {

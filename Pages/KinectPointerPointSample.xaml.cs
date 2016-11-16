@@ -2,6 +2,8 @@
 // <copyright file="KinectPointerPointSample.xaml.cs" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
+//
+//   THIS PAGE IS FOR DEBUG ONLY!
 //------------------------------------------------------------------------------
 
 namespace Microsoft.Samples.Kinect.ControlsBasics

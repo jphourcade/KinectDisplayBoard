@@ -52,19 +52,12 @@ C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\bin\AnyCPU\De
 C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\bin\AnyCPU\Debug\MaterialDesignThemes.Wpf.xml
 C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\bin\AnyCPU\Debug\Microsoft.Kinect.xml
 C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\bin\AnyCPU\Debug\Microsoft.Kinect.Wpf.Controls.xml
-C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Debug\KinectBoard.csprojResolveAssemblyReference.cache
 C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Debug\Common\StandardStyles.baml
 C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Debug\HandPointers\HandPointerStyles.baml
-C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Debug\Pages\EngagementSettings.baml
 C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Debug\Pages\KinectPointerPointSample.baml
-C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Debug\Pages\ScrollViewerSample.baml
-C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Debug\SelectionDisplay.baml
 C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Debug\App.baml
 C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Debug\MainWindow.g.cs
-C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Debug\Pages\EngagementSettings.g.cs
 C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Debug\Pages\KinectPointerPointSample.g.cs
-C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Debug\Pages\ScrollViewerSample.g.cs
-C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Debug\SelectionDisplay.g.cs
 C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Debug\App.g.cs
 C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Debug\KinectBoard_MarkupCompile.cache
 C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Debug\KinectBoard_MarkupCompile.lref
@@ -166,3 +159,4 @@ C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Debug\Kin
 C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\bin\AnyCPU\Debug\Assets\Interview Questions.txt
 C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Debug\Pages\HelpControl.g.cs
 C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Debug\Pages\HelpControl.baml
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Debug\KinectBoard.csprojResolveAssemblyReference.cache

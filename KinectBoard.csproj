@@ -26,7 +26,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationRevision>10</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -211,9 +211,6 @@
     <Compile Include="Pages\CSEvents.xaml.cs">
       <DependentUpon>CSEvents.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\EngagementSettings.xaml.cs">
-      <DependentUpon>EngagementSettings.xaml</DependentUpon>
-    </Compile>
     <Compile Include="HandPointers\HandOverHeadEngagementModel.cs" />
     <Compile Include="Pages\FunPage.xaml.cs">
       <DependentUpon>FunPage.xaml</DependentUpon>
@@ -230,14 +227,8 @@
     <Compile Include="Pages\PeoplePage.xaml.cs">
       <DependentUpon>PeoplePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ScrollViewerSample.xaml.cs">
-      <DependentUpon>ScrollViewerSample.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\WeatherPage.xaml.cs">
       <DependentUpon>WeatherPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SelectionDisplay.xaml.cs">
-      <DependentUpon>SelectionDisplay.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helper Classes\WeatherData.cs" />
     <Page Include="Common\StandardStyles.xaml">
@@ -272,10 +263,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\EngagementSettings.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Pages\FunPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -296,10 +283,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ScrollViewerSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Pages\WeatherPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -308,10 +291,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
-    </Page>
-    <Page Include="SelectionDisplay.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -350,10 +329,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="HandPointers\HighlightRectangle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\operahouse.jpg" />
-    <Resource Include="Images\sydney.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\CursorSpriteSheetPurple.png" />

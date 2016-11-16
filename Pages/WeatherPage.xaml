@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <!-- Page title -->
-        <TextBlock Grid.Row="0" Style="{StaticResource HeaderStyle}" x:Name="weatherPageTitle" Margin="0 10 0 10" Text="Weather" FontSize="36" FontWeight="UltraBold" Foreground="#FFEEEEEE" />
+        <TextBlock Grid.Row="0" Style="{StaticResource HeaderStyle}" x:Name="weatherPageTitle" Margin="0,10,0,0" Text="Weather" FontSize="36" FontWeight="UltraBold" Foreground="#FFEEEEEE" />
         <Image x:Name="WULogo" Grid.Row="0" Source="../Images/wundergroundLogo_4c_rev_horz.jpg" Width="100px" VerticalAlignment="Center"  HorizontalAlignment="Right"/>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -33,7 +33,7 @@
                     <RowDefinition Height="0.7*"/>
                     <RowDefinition Height="0.3*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Style="{StaticResource HeaderStyle}" x:Name="Forecast" Text="Forecast" Margin="10,10,0,10" Foreground="#FFFFC000"/>
+                <TextBlock Grid.Row="0" Style="{StaticResource HeaderStyle}" x:Name="Forecast" Text="Forecast" Margin="10,0,0,0" Foreground="#FFFFC000"/>
                 <Grid Grid.Row="1" x:Name="WeatherCards" Margin="10,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.5*"/>
@@ -249,7 +249,7 @@
                     </Button>
                 </Grid>
 
-                    <StackPanel Grid.Row="2"  x:Name="MoreDetailWeather"  Margin="10,5">
+                    <StackPanel Grid.Row="2"  x:Name="MoreDetailWeather"  Margin="10,0">
                         <TextBlock x:Name="moreDetailTitle" FontFamily="26" Foreground="#FFFFC000" >More Details</TextBlock>
                         <TextBlock x:Name="moreDetailDayTitle" FontSize="25" TextDecorations="Underline" TextWrapping="Wrap" Foreground="White" />
                         <TextBlock x:Name="moreDetailDayText" FontSize="25" TextDecorations="" FontStyle="Italic" TextWrapping="Wrap" Foreground="White"/>
@@ -260,7 +260,7 @@
             </Grid>
 
             <StackPanel Grid.Column="1">
-                <TextBlock x:Name="RadarTitle"  Style="{StaticResource HeaderStyle}" Text="Radar" Margin="10,10,0,10" Foreground="#FFFFC000"/>
+                <TextBlock x:Name="RadarTitle"  Style="{StaticResource HeaderStyle}" Text="Radar" Margin="10,0,0,0" Foreground="#FFFFC000"/>
                 <loading:LoadingControl x:Name="Loading"/>
                 <Image x:Name="RadarImage" Margin="0" Height="750" Width="750" />
             </StackPanel>

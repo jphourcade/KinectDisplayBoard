@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -12,8 +11,6 @@ using System.Timers;
 
 namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
 {
-    //TODO only get 1 question a day
- 
     /// <summary>
     /// Interaction logic for FunPage.xaml
     /// </summary>
@@ -34,6 +31,9 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             SetApis();           
         }      
 
+        /// <summary>
+        /// Sets apis on init. Only called once a day
+        /// </summary>
         private void SetApis()
         {
             if (DateTime.Today.Day != SavedDay)
@@ -48,11 +48,21 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             SetInterviewQuestionText();
         }
 
+        /// <summary>
+        /// Helper method to set APIs that is called on a timer.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SetApis(object sender, ElapsedEventArgs e)
         {
             SetApis();
         }
 
+        /// <summary>
+        /// Checks if trivia question answer is correct or not
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             RadioButton rb = (RadioButton)sender;
@@ -70,6 +80,9 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             }
         }
 
+        /// <summary>
+        /// Gets triva from opentdb.com
+        /// </summary>
         private void GetTrivia()
         {
             //Trivia URI
@@ -85,7 +98,9 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             }
         }
                
-
+        /// <summary>
+        /// Sets a random interview question from the static text file.
+        /// </summary>
         private void SetInterviewQuestion()
         {
             Random rand = new Random();
@@ -93,11 +108,18 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             staticInterviewQuestion = MainWindow.interviewQuestions[questionNum];
         }
 
+        /// <summary>
+        /// Sets Interview question text
+        /// </summary>
         private void SetInterviewQuestionText()
         {
             InterviewQuestionText.Text = staticInterviewQuestion;
         }
 
+        /// <summary>
+        /// Sets the fun fact of the day from Numbersapi.com.
+        /// Uses the day for the fun fact.
+        /// </summary>
         private void SetFunFact()
         {
             DateTime today = DateTime.Today;
@@ -114,11 +136,17 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             }
         }
 
+        /// <summary>
+        /// Sets the fun fact text
+        /// </summary>
         private void SetFunFactText()
         {
             FunFactText.Text = staticFunFact;
         }
-
+       
+        /// <summary>
+        /// Sets the trivia question text and sets true or false or multiple answer
+        /// </summary>
         private void SetTriviaQuestionText()
         {
             Question.Text = staticTriviaQuestion;
@@ -149,10 +177,13 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
                 staticCorrectAnswer = tres.correct_answer;
                 staticIncorrectAnswers = tres.incorrect_answers;               
             }
-        }
+        }        
 
-        
-
+        /// <summary>
+        /// Sets questions if it is multiple choice
+        /// </summary>
+        /// <param name="correct_answer"></param>
+        /// <param name="incorrect_answers"></param>
         private void SetMultiAnswers(string correct_answer, string[] incorrect_answers)
         {
             Random rand = new Random();

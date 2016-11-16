@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Timers;
 using System.Xml.Serialization;
 
 namespace Microsoft.Samples.Kinect.ControlsBasics
 {
+    /// <summary>
+    /// Helper file for MainWindow class that handles all CS events on MainWindow
+    /// </summary>
     public partial class MainWindow
     {
         private static Timer csEventsTimer;

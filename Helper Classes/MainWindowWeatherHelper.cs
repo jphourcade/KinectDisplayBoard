@@ -1,15 +1,14 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Media.Imaging;
 
 namespace Microsoft.Samples.Kinect.ControlsBasics
 {
+    /// <summary>
+    /// Helper file for MainWindow class that handles all weather on MainWindow
+    /// </summary>
     public partial class MainWindow
     {
         private static Timer weatherTimer;
@@ -64,7 +63,11 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                 {
                     Rootobject root = JsonConvert.DeserializeObject<Rootobject>(responseStream);
                     fullWeatherData = root;
-                    weatherData = root.forecast.simpleforecast;
+                    try
+                    {
+                        weatherData = root.forecast.simpleforecast;
+                    }
+                    catch { }
                     SetWeatherData();
                 }
                 catch { }

@@ -29,10 +29,10 @@
         </StackPanel>
 
         
-        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="BusTimesText" Style="{StaticResource HeaderStyle}" Foreground="#FFFFC000">Bus Times</TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="1" Margin="10,0" x:Name="BusTimesText" Style="{StaticResource HeaderStyle}" Foreground="#FFFFC000">Bus Times</TextBlock>
 
 
-        <DataGrid x:Name="BusGrid" IsReadOnly="True"  ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="Cell" Background="{x:Null}"
+        <DataGrid x:Name="BusGrid" IsReadOnly="True" Margin="10,0" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="Cell" Background="{x:Null}"
                       ScrollViewer.PanningMode="VerticalFirst"
                       ScrollViewer.CanContentScroll="True"
                       ScrollViewer.VerticalScrollBarVisibility="Auto"

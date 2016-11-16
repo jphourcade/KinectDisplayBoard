@@ -1,20 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WpfAnimatedGif;
 
 
@@ -35,6 +22,9 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             GetRadar();
         }
         
+        /// <summary>
+        /// Calls the radar URI and animates it
+        /// </summary>
         private void GetRadar()
         {
             BitmapImage bitmap = new BitmapImage();
@@ -45,7 +35,9 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             Loading.Visibility = Visibility.Collapsed;
         }
 
-      
+      /// <summary>
+      /// Fills the buttons with the forecast
+      /// </summary>
         private void PopulateForecast()
         {
 
@@ -138,6 +130,11 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             catch { }
         }
 
+        /// <summary>
+        /// Click handler for each button click on weather page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MoreDetailsClick(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;            

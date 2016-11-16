@@ -7,11 +7,7 @@ using System.Windows.Controls;
 using System;
 using System.Windows.Threading;
 using System.Text.RegularExpressions;
-using System.Windows.Media.Imaging;
-using WpfAnimatedGif;
 using System.Windows;
-using System.Diagnostics;
-using System.Data;
 using System.Windows.Controls.Primitives;
 
 namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
@@ -32,12 +28,6 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
         {
             InitializeComponent();
             SetPeopleList();
-
-            //BitmapImage bitmap = new BitmapImage();
-            //bitmap.BeginInit();
-            //bitmap.UriSource = new Uri("../Assets/spin.gif", UriKind.Relative);
-            //bitmap.EndInit();
-            //ImageBehavior.SetAnimatedSource(LoadingImage, bitmap);
         }
       
 
@@ -103,6 +93,11 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             return p;   
         }
 
+        /// <summary>
+        /// Sets the floor and checks a regex if the office is on that floor
+        /// </summary>
+        /// <param name="innerText"></param>
+        /// <returns></returns>
         private string SetFloor(string innerText)
         {
             if (firstFloor.IsMatch(innerText))
@@ -131,6 +126,11 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             }
         }
 
+        /// <summary>
+        /// Click handler for rows in datagrid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Row_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             DataGridCellsPresenter dataRow = (DataGridCellsPresenter)e.Source;

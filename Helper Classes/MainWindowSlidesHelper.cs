@@ -9,6 +9,9 @@ using System.Windows.Media.Imaging;
 
 namespace Microsoft.Samples.Kinect.ControlsBasics
 {
+    /// <summary>
+    /// Helper file for MainWindow class that handles all slides on MainWindow
+    /// </summary>
     partial class MainWindow
     {
         private static Timer slideSwapTimer;
@@ -22,16 +25,29 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             slideSwapTimer.Enabled = true;
         }
 
+        /// <summary>
+        /// Gets the slides for the page async
+        /// </summary>
         private async void GetSlides()
         {
             List<BitmapImage> imageList = await GetSlidesAsync();
             slideImages = imageList;
         }
 
+        /// <summary>
+        /// Helper method that is called on a timer to get slides
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GetSlideURLs(object sender, ElapsedEventArgs e)
         {
             GetSlides();
         }
+
+        /// <summary>
+        /// Gets the slides and saves them in a list as bitmapImages
+        /// </summary>
+        /// <returns></returns>
         async Task<List<BitmapImage>> GetSlidesAsync()
         {
 

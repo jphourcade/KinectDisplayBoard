@@ -1,18 +1,14 @@
 ﻿using Microsoft.Samples.Kinect.ControlsBasics.Helper_Classes;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Timers;
-using System.Web;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
-using System.Xml;
 using System.Xml.Serialization;
 
 namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
@@ -49,6 +45,9 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             GetNews();
         }
 
+        /// <summary>
+        /// Gets news from all sources up front
+        /// </summary>
         private void GetNews()
         {
             //News found on AP
@@ -84,6 +83,11 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             }          
         }
 
+        /// <summary>
+        /// Handles new response from CLAS
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void downloader_DownloadStringCompletedCLAS(object sender, DownloadStringCompletedEventArgs e)
         {
             if (e.Error == null)
@@ -118,6 +122,11 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             }
         }
 
+        /// <summary>
+        /// Handles new response from CNET
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void downloader_DownloadStringCompletedCNET(object sender, DownloadStringCompletedEventArgs e)
         {
             if (e.Error == null)
@@ -156,6 +165,11 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             }
         }
 
+        /// <summary>
+        /// Handles new response from BBC
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void downloader_DownloadStringCompletedBBC(object sender, DownloadStringCompletedEventArgs e)
         {
             if (e.Error == null)
@@ -196,6 +210,11 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             }
         }
 
+        /// <summary>
+        /// Handles new response from Ap
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void downloader_DownloadStringCompletedAP(object sender, DownloadStringCompletedEventArgs e)
         {
             if (e.Error == null)
@@ -230,8 +249,12 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
 
             }
         }
-
-
+        
+        /// <summary>
+        /// Sets the visible news listview upon checked source
+        /// </summary>
+        /// <param name="news"></param>
+        /// <param name="sourceTitle"></param>
         private void SetGenNewsListView(NewsSource news, string sourceTitle)
         {
             switch (news)
@@ -255,6 +278,9 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
                         
         }
         
+        /// <summary>
+        /// Used for swapping CS news if there is too many news articles
+        /// </summary>
         private void SetSwapTimer()
         {
             // Create a timer with a two second interval.
@@ -266,11 +292,19 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             swapTimer.Enabled = true;
         }
 
+        /// <summary>
+        /// Helper method for setting CS news cards that is called from a timer.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SetCSCards(object sender, ElapsedEventArgs e)
         {
             SetCSNewsCard();
         }
 
+        /// <summary>
+        /// Animation code for cs news cards
+        /// </summary>
         private void SetCSNewsCard()
         {
             //Swap and Fade Animation Code
@@ -455,6 +489,9 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             }
         }
 
+        /// <summary>
+        /// Sets inital CS cards
+        /// </summary>
         private void SetInitalCSCards()
         {
             //Set the inital card value
@@ -469,6 +506,11 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             });
         }
         
+        /// <summary>
+        /// Radio button handler for general news
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             NewsSource source = new NewsSource();

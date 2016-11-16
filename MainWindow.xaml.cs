@@ -124,13 +124,22 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             GetInterviewQuestions();
             
         }
-
+        /// <summary>
+        /// Page timer code to flip back to home if no one is using the board
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnKinectPointerExited(object sender, KinectPointerEventArgs e)
         {
             isKinectActive = false;
             pageTimer.Start();
         }
 
+        /// <summary>
+        /// Page timer code to flip back to home if no one is using the board
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnKinectPointerEntered(object sender, KinectPointerEventArgs e)
         {
             isKinectActive = true;
@@ -173,6 +182,9 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             }
         }
         
+        /// <summary>
+        /// Page timer init
+        /// </summary>
         private void SetPageTimer()
         {
             pageTimer = new Timer(10000);
@@ -183,14 +195,15 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
 
         private void ReturnToHomePage(object sender, ElapsedEventArgs e)
         {
-            //if (!iskinectactive)
-            //{
-            //    dispatcher.invoke(new action(() =>
-            //    {
-            //        navigationregion.content = this.kinectregiongrid;
-            //        backbutton.visibility = visibility.hidden;
-            //    }));
-            //}
+            if (!isKinectActive)
+            {
+                Dispatcher.Invoke(new Action(() =>
+                {
+                    navigationRegion.Content = this.kinectRegionGrid;
+                    backButton.Visibility = Visibility.Hidden;
+                    helpButton.Visibility = Visibility.Visible;
+                }));
+            }
         }
 
         /// <summary>
@@ -204,8 +217,6 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             GetWeatherData();
             GetSlides();
         }
-       
-        //TODO DEBUG page timer
               
         /// <summary>
         /// Creates a time that runs the clock and date for the UI.
@@ -254,22 +265,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                 backButton.Visibility = Visibility.Visible;
                 navigationRegion.Content = Activator.CreateInstance(sampleDataItem.NavigationPage);
             }
-            else
-            {
-                var selectionDisplay = new SelectionDisplay(button.Content as string);
-                kinectRegionGrid.Children.Add(selectionDisplay);
-
-                // Selection dialog covers the entire interact-able area, so the current press interaction
-                // should be completed. Otherwise hover capture will allow the button to be clicked again within
-                // the same interaction (even whilst no longer visible).
-                selectionDisplay.Focus();
-
-                // Since the selection dialog covers the entire interact-able area, we should also complete
-                // the current interaction of all other pointers.  This prevents other users interacting with elements
-                // that are no longer visible.
-                this.kinectRegion.InputPointerManager.CompleteGestures();
-                e.Handled = true;
-            }
+            
         }
 
         /// <summary>
@@ -301,6 +297,11 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             */
         }
 
+        /// <summary>
+        /// Animation code for flipping slides on the main page
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="e"></param>
         private void RotateSlides(object obj, ElapsedEventArgs e)
         {
             Dispatcher.Invoke(() =>
@@ -389,12 +390,15 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             pageTimer.Start();
         }
 
+        /// <summary>
+        /// Helper method that calls the interview questions on program startup
+        /// </summary>
         private void GetInterviewQuestions()
         {
             string line;
             interviewQuestions = new List<string>();
             // Read the file and display it line by line.
-            string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            string dir = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             string filePath = dir + @"\Assets\Interview Questions.txt";
             System.IO.StreamReader file = new System.IO.StreamReader(filePath);
             while ((line = file.ReadLine()) != null)
@@ -414,6 +418,11 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             file.Close();         
         }
 
+        /// <summary>
+        /// Opens help page on click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void helpButton_Click(object sender, RoutedEventArgs e)
         {
             helpButton.Visibility = Visibility.Collapsed;
