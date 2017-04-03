@@ -44,8 +44,8 @@
                       >
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Stop Name" Binding="{Binding stopname}" FontSize="16" />
-                <DataGridTextColumn Header="Route Name" Binding="{Binding routename}" FontSize="16"/>
+                <DataGridTextColumn Header="Stop Number     " Binding="{Binding stopid}" FontSize="16" />
+                <DataGridTextColumn Header="Route Name     " Binding="{Binding routename}" FontSize="16"/>
                 <DataGridTextColumn Header="Time" Binding="{Binding minutes}" FontSize="16"/>
             </DataGrid.Columns>
             <DataGrid.RowStyle>

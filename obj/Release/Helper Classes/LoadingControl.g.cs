@@ -9,6 +9,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using MaterialDesignThemes.Wpf;
+using MaterialDesignThemes.Wpf.Transitions;
 using Microsoft.Samples.Kinect.ControlsBasics.Helper_Classes;
 using System;
 using System.Diagnostics;

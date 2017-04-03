@@ -15,8 +15,8 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         public int minutes { get; set; }
         public string agency { get; set; }
         public string agencyName { get; set; }
-        public string direction { get; set; }
-        public string stopname { get; set; }
+        //public string direction { get; set; }  //This is removed in latest bongo api update
+        //public string stopname { get; set; }  //This is removed in latest bongo api update
 
     }
 
@@ -27,7 +27,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
 
     class VisibleBongoData
     {
-        public string stopname { get; set; }
+        public string stopid { get; set; }
         public string routename { get; set; }
         public string minutes { get; set; }
         public string color { get; set; }

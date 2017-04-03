@@ -83,7 +83,7 @@
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" x:Name="InterviewTitle" Style="{StaticResource HeaderStyle}" Foreground="#FFFFC000" Text="Daily Interview Question"/>
             <TextBlock Grid.Row="1" TextWrapping="Wrap" x:Name="InterviewQuestionText" Foreground="White" FontSize="25"/>
-            <TextBlock Grid.Row="2" x:Name="FunFactTitle" Style="{StaticResource HeaderStyle}" Foreground="#FFFFC000" Text="Fun Fact of the Day"/>
+            <TextBlock Grid.Row="2" x:Name="FunFactTitle" Style="{StaticResource HeaderStyle}" Foreground="#FFFFC000" Text="Daily Fact"/>
             <TextBlock Grid.Row="3" TextWrapping="Wrap" x:Name="FunFactText" Foreground="White" FontSize="25"/>
             
         </Grid>

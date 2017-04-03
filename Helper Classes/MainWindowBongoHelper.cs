@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.Timers;
 using System.Windows.Threading;
@@ -80,7 +81,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         private void GetBusData()
         {
             //Prediction URI from Bongo API for stop 0001 Downtown Interchange
-            Uri feedUri = new Uri("http://api.ebongo.org/prediction?format=json&stopid=0001&api_key=XXXX");
+            Uri feedUri = new Uri("http://api.ebongo.org/prediction?format=json&stopid=0001");
             using (WebClient downloader = new WebClient())
             {
                 downloader.DownloadStringCompleted += new DownloadStringCompletedEventHandler(downloader_DownloadStringCompletedBongo);
@@ -98,6 +99,11 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             if (e.Error == null)
             {
                 string responseStream = e.Result;
+                if (responseStream.Contains("("))
+                {
+                    responseStream = responseStream.Substring(responseStream.IndexOf('(') + 1);
+                    responseStream = responseStream.Substring(0, responseStream.Length - 2);                    
+                }
                 bongoData = JsonConvert.DeserializeObject<BongoData>(responseStream);
             }
             SetBongoData();
@@ -146,30 +152,35 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                     {
                         minString = "Arriving";
                     }
-
-                    string colorString = "#FFFFFF";
-                    if (bd.agency.Equals("cambus"))
+                    
+                    string colorString = "#indianred";
+                    if (bd.agency != null)
                     {
-                        colorString = "#FFFFC000";
-                    }
-                    else if (bd.agency.Equals("iowa-city"))
-                    {
-                        colorString = "indianred";
-                    }
-                    else if (bd.agency.Equals("coralville"))
-                    {
-                        colorString = "royalblue";
+                        if (bd.agency.Equals("uiowa"))
+                        {
+                            colorString = "#FFFFC000";
+                        }
+                        else if (bd.agency.Equals("iowa-city"))
+                        {
+                            colorString = "indianred";
+                        }
+                        else if (bd.agency.Equals("coralville"))
+                        {
+                            colorString = "royalblue";
+                        }
                     }
 
                     if (bd.minutes <= 15 || bongoData.predictions.Count <= 8)
                     {
-                        FullBongoData.Add(new VisibleBongoData() { stopname = bd.stopname, minutes = minString, routename = bd.title, color = colorString });
+                        FullBongoData.Add(new VisibleBongoData() {
+                            stopid = bongoData.stopinfo.stopid,
+                            minutes = minString, routename = bd.title, color = colorString });
                     }
                 }
             }
             else
             {
-                FullBongoData.Add(new VisibleBongoData() { stopname = "No buses running", color = "#FFFFFF" });
+                FullBongoData.Add(new VisibleBongoData() { stopid = "No buses running", color = "#FFFFFF" });
             }
         }
     }

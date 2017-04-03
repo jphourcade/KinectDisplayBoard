@@ -63,3 +63,5 @@ C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Release\K
 C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Release\KinectBoard.exe
 C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Release\KinectBoard.pdb
 C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Release\KinectBoard.csprojResolveAssemblyReference.cache
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Release\Pages\HelpControl.g.cs
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\Release\KinectBoard_Content.g.cs

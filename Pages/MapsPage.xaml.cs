@@ -44,7 +44,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             if (DateTime.Today.Day != SavedDay)
             {
                 SavedDay = DateTime.Today.Day;
-                slideImages = await GetSlidesAsync();
+                slideImages = await GetMapsAsync();
             }
             Loading.Visibility = Visibility.Collapsed;
             MapImage.Source = slideImages[initMap];
@@ -56,7 +56,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void GetSlideURLs(object sender, ElapsedEventArgs e)
+        private void GetMapURLs(object sender, ElapsedEventArgs e)
         {
             GetMaps();
         }
@@ -65,7 +65,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
         /// Gets the maps and saves them in memory
         /// </summary>
         /// <returns>A dictionary containing floor title as key and image as value</returns>
-        async Task<Dictionary<string, BitmapImage>> GetSlidesAsync()
+        async Task<Dictionary<string, BitmapImage>> GetMapsAsync()
         {
             Dictionary<string, string> linksDict = new Dictionary<string, string>()
             {

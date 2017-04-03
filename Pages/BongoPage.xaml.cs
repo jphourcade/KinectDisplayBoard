@@ -91,7 +91,11 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             if (e.Error == null)
             {
                 string responseStream = e.Result;
-               
+                if (responseStream.Contains("("))
+                {
+                    responseStream = responseStream.Substring(responseStream.IndexOf('(') + 1);
+                    responseStream = responseStream.Substring(0, responseStream.Length - 2);
+                }
                 bongoData = JsonConvert.DeserializeObject<BongoData>(responseStream);
             }
             SetBongoData();
@@ -136,25 +140,32 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
                             minString = "Arriving";
                         }
 
-                        string colorString = "#FFFFFF";
-                        if (bd.agency.Equals("cambus"))
+                        string colorString = "indianred";
+                        if (bd.agency != null)
                         {
-                            colorString = "#FFFFC000";
+                            if (bd.agency.Equals("cambus") || bd.agency.Equals("uiowa"))
+                            {
+                                colorString = "#FFFFC000";
+                            }
+                            else if (bd.agency.Equals("iowa-city"))
+                            {
+                                colorString = "indianred";
+                            }
+                            else if (bd.agency.Equals("coralville"))
+                            {
+                                colorString = "royalblue";
+                            }
                         }
-                        else if (bd.agency.Equals("iowa-city"))
-                        {
-                            colorString = "indianred";
-                        }
-                        else if (bd.agency.Equals("coralville"))
-                        {
-                            colorString = "royalblue";
-                        }
-                        currentBongoData.Add(new VisibleBongoData() { stopname = bd.stopname, minutes = minString, routename = bd.title, color = colorString });
+                        currentBongoData.Add(new VisibleBongoData() {
+                            stopid = bongoData.stopinfo.stopid,
+                            minutes = minString, routename = bd.title, color = colorString });
                     }         
             }
             else
             {
-                currentBongoData.Add(new VisibleBongoData() { stopname = "No busses running at this time" });
+                currentBongoData.Add(new VisibleBongoData() {
+                    //stopname = "No busses running at this time"
+                });
             }
             
             try
