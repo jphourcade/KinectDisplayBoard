@@ -42,7 +42,11 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         {
 
             try
-            {            
+            {
+                if(fullWeatherData == null)
+                {
+                    return;
+                }
             Simpleforecast weatherData = fullWeatherData.forecast.simpleforecast;
             string hostIconURL = "../Images/WeatherIcons/";
             if (DateTime.Now.Hour >= 18 || DateTime.Now.Hour <= 4)
@@ -127,7 +131,9 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                 moreDetailNightTitle.Text = fullWeatherData.forecast.txt_forecast.forecastday[1].title;
                 moreDetailNightText.Text = fullWeatherData.forecast.txt_forecast.forecastday[1].fcttext;
             }
-            catch { }
+            catch {
+                return;
+            }
         }
 
         /// <summary>
@@ -137,10 +143,15 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         /// <param name="e"></param>
         private void MoreDetailsClick(object sender, RoutedEventArgs e)
         {
-            Button button = (Button)sender;            
+            Button button = (Button)sender;
             int day = int.Parse(button.Name.Substring(2)) * 2;
             try
             {
+                if(fullWeatherData == null)
+                {
+                    moreDetailDayText.Text = "Sorry, the internet isn't connected right now.";
+                    return;
+                }
                 moreDetailDayTitle.Text = fullWeatherData.forecast.txt_forecast.forecastday[day].title;
                 moreDetailDayText.Text = fullWeatherData.forecast.txt_forecast.forecastday[day].fcttext;
                 moreDetailNightTitle.Text = fullWeatherData.forecast.txt_forecast.forecastday[day + 1].title;

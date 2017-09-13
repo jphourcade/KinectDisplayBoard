@@ -50,51 +50,62 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         /// <returns></returns>
         async Task<List<BitmapImage>> GetSlidesAsync()
         {
-
-            HttpClient client = new HttpClient();
-            var doc = new HtmlDocument();
-            var html = await client.GetStringAsync("http://signage.uiowa.edu/computer-science/computer-science");
-            doc.LoadHtml(html);
-            List<string> imageLinks = await Task.Run(() =>
+            try
             {
-                List<string> links = new List<string>();
-                try
+                HttpClient client = new HttpClient();
+                var doc = new HtmlDocument();
+                string html = await client.GetStringAsync("http://signage.uiowa.edu/computer-science/computer-science");
+                doc.LoadHtml(html);
+                List<string> imageLinks = await Task.Run(() =>
                 {
-                    var rows = doc.DocumentNode.SelectNodes("//*[@id='flexslider-1']/ul/li/div/div/img");
-                    foreach (var row in rows)
-                    {
-                        links.Add(row.Attributes["src"].Value);
-                    }
-                    return links;
-                }
-                catch { return links; }
-            });
-
-            List<BitmapImage> images = await Task.Run(() =>
-            {
-                List<BitmapImage> imgs = new List<BitmapImage>();
-                foreach (var link in imageLinks)
-                {
-                    var webClient = new WebClient();
+                    List<string> links = new List<string>();
                     try
                     {
-                        var buffer = webClient.DownloadData(link);
-                        var bitmapImage = new BitmapImage();
-                        using (var stream = new MemoryStream(buffer))
+                        if(doc == null)
                         {
-                            bitmapImage.BeginInit();
-                            bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                            bitmapImage.StreamSource = stream;
-                            bitmapImage.EndInit();
-                            bitmapImage.Freeze();
-                            imgs.Add(bitmapImage);
+                            return links;
                         }
+                        var rows = doc.DocumentNode.SelectNodes("//*[@id='flexslider-1']/ul/li/div/div/img");
+                        foreach (var row in rows)
+                        {
+                            links.Add(row.Attributes["src"].Value);
+                        }
+                        return links;
                     }
-                    catch { }
-                }
-                return imgs;
-            });            
-            return images;
+                    catch { return links; }
+                });
+
+                List<BitmapImage> images = await Task.Run(() =>
+                {
+                    List<BitmapImage> imgs = new List<BitmapImage>();
+                    foreach (var link in imageLinks)
+                    {
+                        var webClient = new WebClient();
+                        try
+                        {
+                            var buffer = webClient.DownloadData(link);
+                            var bitmapImage = new BitmapImage();
+                            using (var stream = new MemoryStream(buffer))
+                            {
+                                bitmapImage.BeginInit();
+                                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                                bitmapImage.StreamSource = stream;
+                                bitmapImage.EndInit();
+                                bitmapImage.Freeze();
+                                imgs.Add(bitmapImage);
+                            }
+                        }
+                        catch { }
+                    }
+                    return imgs;
+                });
+
+
+                return images;
+            }
+            catch {
+                return new List<BitmapImage>();
+            }
         }
     }
 }

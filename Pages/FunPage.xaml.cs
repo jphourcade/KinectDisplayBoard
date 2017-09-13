@@ -85,17 +85,21 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
         /// </summary>
         private void GetTrivia()
         {
-            //Trivia URI
-            Uri feedUri = new Uri(@"http://opentdb.com/api.php?amount=1&category=18");
-            using (HttpClient downloader = new HttpClient())
+            try
             {
-                Task<string> jsonString = downloader.GetStringAsync(feedUri);
-                if(jsonString.Result != null)
+                //Trivia URI
+                Uri feedUri = new Uri(@"http://opentdb.com/api.php?amount=1&category=18");
+                using (HttpClient downloader = new HttpClient())
                 {
-                    TriviaRoot triviaRoot = JsonConvert.DeserializeObject<TriviaRoot>(jsonString.Result);
-                    ParseTrivia(triviaRoot);
-                }                
+                    Task<string> jsonString = downloader.GetStringAsync(feedUri);
+                    if (jsonString.Result != null)
+                    {
+                        TriviaRoot triviaRoot = JsonConvert.DeserializeObject<TriviaRoot>(jsonString.Result);
+                        ParseTrivia(triviaRoot);
+                    }
+                }
             }
+            catch { }
         }
                
         /// <summary>
@@ -122,18 +126,22 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
         /// </summary>
         private void SetFunFact()
         {
-            DateTime today = DateTime.Today;
-            Debug.WriteLine(today.Month + " " + today.Day);
-            Uri feedUri = new Uri(@"http://numbersapi.com/" + today.Month + "/" + today.Day + "/date?json");
-            using (HttpClient downloader = new HttpClient())
+            try
             {
-                var funFactString = downloader.GetStringAsync(feedUri);
-                if (funFactString.Result != null)
+                DateTime today = DateTime.Today;
+                Debug.WriteLine(today.Month + " " + today.Day);
+                Uri feedUri = new Uri(@"http://numbersapi.com/" + today.Month + "/" + today.Day + "/date?json");
+                using (HttpClient downloader = new HttpClient())
                 {
-                    FunFact funFact = JsonConvert.DeserializeObject<FunFact>(funFactString.Result);
-                    staticFunFact = funFact.text;
+                    var funFactString = downloader.GetStringAsync(feedUri);
+                    if (funFactString.Result != null)
+                    {
+                        FunFact funFact = JsonConvert.DeserializeObject<FunFact>(funFactString.Result);
+                        staticFunFact = funFact.text;
+                    }
                 }
             }
+            catch { }
         }
 
         /// <summary>

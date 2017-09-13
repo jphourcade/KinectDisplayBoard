@@ -36,10 +36,13 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
         /// </summary>
         private async void SetPeopleList()
         {
-            List<CSPeople> peopleList = await ParseHttpPeopleAsync();
-            Dispatcher.Invoke(DispatcherPriority.DataBind, new Action(delegate { PeopleGrid.DataContext = peopleList; }));
-            Loading.Visibility = Visibility.Collapsed;
-            
+            try
+            {
+                List<CSPeople> peopleList = await ParseHttpPeopleAsync();
+                Dispatcher.Invoke(DispatcherPriority.DataBind, new Action(delegate { PeopleGrid.DataContext = peopleList; }));
+            }
+            catch { }
+                Loading.Visibility = Visibility.Collapsed;
            
         }
         

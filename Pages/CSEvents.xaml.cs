@@ -1,6 +1,7 @@
 ﻿using Microsoft.Samples.Kinect.ControlsBasics.Helper_Classes;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -371,6 +372,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
         /// <param name="e"></param>
         private void GetCSEvents()
         {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             //CS Events found on Iowa CS Website
             Uri feedUri = new Uri("https://cs.uiowa.edu/events/rss.xml");
             using (WebClient downloader = new WebClient())
@@ -406,25 +408,25 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
                     try
                     {
                         nodes result = (nodes)serializer.Deserialize(reader);
-                    foreach (var nd in result.node)
-                    {
-                        string date = nd.startdate;
-                        Regex reg = new Regex("\\(All\\sday\\)");
-                        if (reg.IsMatch(nd.startdate))
+                        foreach (var nd in result.node)
                         {
-                            date = nd.startdate.Substring(0, reg.Match(nd.startdate).Index);
-                        }
-                        DateTime startDate = DateTime.Parse(date);
+                            string date = nd.startdate;
+                            Regex reg = new Regex("\\(All\\sday\\)");
+                            if (reg.IsMatch(nd.startdate))
+                            {
+                                date = nd.startdate.Substring(0, reg.Match(nd.startdate).Index);
+                            }
+                            DateTime startDate = DateTime.Parse(date);
 
-                        fullCsEventsList.Add(new VisibleCSItem()
-                        {
-                            csEventLocation = nd.location == null ? "" : Encoding.UTF8.GetString(Encoding.Default.GetBytes(nd.location)),
-                            csEventTime = startDate.Date.ToString("MMMM d, yyyy"),
-                            csEventTitle = nd.title == null ? "" : Encoding.UTF8.GetString(Encoding.Default.GetBytes(nd.title)),
-                            startDate = startDate,
-                            isEvent = true
-                        });                      
-                    }
+                            fullCsEventsList.Add(new VisibleCSItem()
+                            {
+                                csEventLocation = nd.location == null ? "" : Encoding.UTF8.GetString(Encoding.Default.GetBytes(nd.location)),
+                                csEventTime = startDate.Date.ToString("MMMM d, yyyy"),
+                                csEventTitle = nd.title == null ? "" : Encoding.UTF8.GetString(Encoding.Default.GetBytes(nd.title)),
+                                startDate = startDate,
+                                isEvent = true
+                            });
+                        }
                     }
                     catch { }
                     finally
@@ -434,7 +436,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
                             fullCsEventsList.Add(new VisibleCSItem() { csEventTitle = "No CS Events at this time" });
                         }
                     }
-                }              
+                }
             }
             fullCsEventsList.Sort((x, y) => DateTime.Compare(x.startDate, y.startDate));
 

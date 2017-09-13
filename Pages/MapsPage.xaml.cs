@@ -30,10 +30,19 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
             { "Basement", "Map: Basement" }
         };
 
+        private Dictionary<string, string> linksDict = new Dictionary<string, string>()
+            {
+                { "Floor 1", "https://cs.uiowa.edu/sites/cs.uiowa.edu/files/files/floor1.png" },
+                { "Floor 2", "https://cs.uiowa.edu/sites/cs.uiowa.edu/files/files/Floor2.png" },
+                { "Floor 3", "https://cs.uiowa.edu/sites/cs.uiowa.edu/files/files/Floor3.png" },
+                { "Ground Floor", "https://cs.uiowa.edu/sites/cs.uiowa.edu/files/files/Ground.png" },
+                { "Basement", "https://cs.uiowa.edu/sites/cs.uiowa.edu/files/files/Basement.png" }
+            };
+
         public MapsPage()
         {
             InitializeComponent();
-            GetMaps();             
+            GetMaps();
         }
 
         /// <summary>
@@ -47,8 +56,11 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
                 slideImages = await GetMapsAsync();
             }
             Loading.Visibility = Visibility.Collapsed;
-            MapImage.Source = slideImages[initMap];
-            MapTitle.Text = titleTextDict[initMap];
+            if (slideImages.ContainsKey(initMap))
+            {
+                MapImage.Source = slideImages[initMap];
+                MapTitle.Text = titleTextDict[initMap];
+            }
         }
         
         /// <summary>
@@ -67,15 +79,6 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
         /// <returns>A dictionary containing floor title as key and image as value</returns>
         async Task<Dictionary<string, BitmapImage>> GetMapsAsync()
         {
-            Dictionary<string, string> linksDict = new Dictionary<string, string>()
-            {
-                { "Floor 1", "https://cs.uiowa.edu/sites/cs.uiowa.edu/files/files/floor1.png" },
-                { "Floor 2", "https://cs.uiowa.edu/sites/cs.uiowa.edu/files/files/Floor2.png" },
-                { "Floor 3", "https://cs.uiowa.edu/sites/cs.uiowa.edu/files/files/Floor3.png" },
-                { "Ground Floor", "https://cs.uiowa.edu/sites/cs.uiowa.edu/files/files/Ground.png" },
-                { "Basement", "https://cs.uiowa.edu/sites/cs.uiowa.edu/files/files/Basement.png" }
-            };
-
             Dictionary<string, BitmapImage> images = await Task.Run(() =>
             {
                 Dictionary<string,BitmapImage> imgs = new Dictionary<string, BitmapImage>();
@@ -86,8 +89,9 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
                 {           
                     try
                     {
-                            var buffer = webClient.DownloadData(linksDict[s]);
-                            var bitmapImage = new BitmapImage();
+                            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                            byte[] buffer = webClient.DownloadData(linksDict[s]);
+                            BitmapImage bitmapImage = new BitmapImage();
                             using (var stream = new MemoryStream(buffer))
                             {
                                 bitmapImage.BeginInit();
@@ -100,7 +104,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
                         }
                         catch { }
                     }
-                    Debug.WriteLine(imgs.Count);
+
                 return imgs;
             });
        
@@ -110,8 +114,11 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             RadioButton rb = (RadioButton)sender;
-            MapImage.Source = slideImages[(string)rb.Content];
-            MapTitle.Text = titleTextDict[(string)rb.Content];
+            if (slideImages.ContainsKey((string)rb.Content))
+            {
+                MapImage.Source = slideImages[(string)rb.Content];
+                MapTitle.Text = titleTextDict[(string)rb.Content];
+            }
         }
 
 

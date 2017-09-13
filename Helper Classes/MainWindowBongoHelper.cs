@@ -102,8 +102,9 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                 if (responseStream.Contains("("))
                 {
                     responseStream = responseStream.Substring(responseStream.IndexOf('(') + 1);
-                    responseStream = responseStream.Substring(0, responseStream.Length - 2);                    
+                    responseStream = responseStream.Substring(0, responseStream.Length - 2);
                 }
+
                 bongoData = JsonConvert.DeserializeObject<BongoData>(responseStream);
             }
             SetBongoData();
