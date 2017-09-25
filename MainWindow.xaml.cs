@@ -14,6 +14,7 @@ using System.Windows.Threading;
 using Microsoft.Samples.Kinect.ControlsBasics.DataModel;
 using Microsoft.Kinect.Input;
 using Microsoft.Samples.Kinect.ControlsBasics.Pages;
+using System.Net;
 
 namespace Microsoft.Samples.Kinect.ControlsBasics
 {
@@ -49,6 +50,8 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         public MainWindow()
         {
             this.InitializeComponent();
+
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             navService = NavigationService.GetNavigationService(this);
 

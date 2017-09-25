@@ -52,6 +52,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         {
             try
             {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 HttpClient client = new HttpClient();
                 var doc = new HtmlDocument();
                 string html = await client.GetStringAsync("http://signage.uiowa.edu/computer-science/computer-science");
