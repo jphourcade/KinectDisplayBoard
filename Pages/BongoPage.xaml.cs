@@ -96,7 +96,13 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.Pages
                     responseStream = responseStream.Substring(responseStream.IndexOf('(') + 1);
                     responseStream = responseStream.Substring(0, responseStream.Length - 2);
                 }
-                bongoData = JsonConvert.DeserializeObject<BongoData>(responseStream);
+                try
+                {
+                    bongoData = JsonConvert.DeserializeObject<BongoData>(responseStream);
+                }
+                catch {
+                    bongoData = null;
+                }
             }
             SetBongoData();
         }

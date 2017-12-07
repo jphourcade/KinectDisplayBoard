@@ -1,0 +1,18 @@
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\x86\Debug\Common\StandardStyles.baml
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\x86\Debug\HandPointers\HandPointerStyles.baml
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\x86\Debug\Pages\KinectPointerPointSample.baml
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\x86\Debug\App.baml
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\x86\Debug\Helper Classes\LoadingControl.g.cs
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\x86\Debug\MainWindow.g.cs
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\x86\Debug\Pages\BongoPage.g.cs
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\x86\Debug\Pages\CSEvents.g.cs
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\x86\Debug\Pages\HelpControl.g.cs
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\x86\Debug\Pages\KinectPointerPointSample.g.cs
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\x86\Debug\Pages\MapsPage.g.cs
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\x86\Debug\Pages\PeoplePage.g.cs
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\x86\Debug\Pages\WeatherPage.g.cs
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\x86\Debug\App.g.cs
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\x86\Debug\KinectBoard_Content.g.cs
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\x86\Debug\KinectBoard_MarkupCompile.cache
+C:\Users\rwedoff\Documents\Visual Studio 2015\Projects\KinectBoard\obj\x86\Debug\KinectBoard_MarkupCompile.lref

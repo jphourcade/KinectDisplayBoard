@@ -83,10 +83,10 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             {
                 int i = 0;
                 string hostIconURL = "Images/WeatherIcons/";
-                if (DateTime.Now.Hour >= 18 || DateTime.Now.Hour <= 4)
-                {
-                    hostIconURL = hostIconURL + "nt_";
-                }
+                //if (DateTime.Now.Hour >= 18 || DateTime.Now.Hour <= 4)
+                //{
+                //    hostIconURL = hostIconURL + "nt_";
+                //}
                 while (i <= 3 && i < weatherData.forecastday.Length)
                 {
                     if (i == 0)

@@ -55,7 +55,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>97789D2E69777C3B2232FA531260A62BBAA1C5B0</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>96D1843B10D6ACF61CB20EB76B033DB9C217EC48</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>KinectBoard_TemporaryKey.pfx</ManifestKeyFile>
