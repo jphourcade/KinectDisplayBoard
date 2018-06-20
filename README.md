@@ -21,3 +21,20 @@ The cursor code is from ControlBasics WPF from the Kinect SDK samples.
 This display pulls RSS feeds from Uiowa CLAS, Iowa Computer Science events and news, CNET, BBC, AP.
 Also it pulls from WeatherUnderground.
 Lastly, the display parses HTML, and has a dependency from [Iowa Computer Science People](https://cs.uiowa.edu/people) and [Digital Signage](http://signage.uiowa.edu/computer-science/computer-science)
+
+## How to Turn Off Display Board Script
+The display board computer has a PowerShell script that will minimize windows covering the main display window. You have 15 seconds to kill the PowerShell task. If you fail to do this repeatedly, ITS and others will get an email notification.
+
+### Instructions
+- Open Task Manager (Press Ctrl-Shift-Esc)
+- Select PowerShell and click "End Task"
+- Resume normal computer activity. Start with Windows key to get all the apps. Restart the computer to reboot the PowerShell script and the display.
+
+## How to update the app on the computer
+- Build the app and run it on your own Windows 10 Computer. You do not need to have a Kinect to do this.
+- Find the build files on your computer: c:/Users/appdata/.../Kinect.....   etc.
+- Copy and past the build files on your flash drive. Typically the .exe file is the only file you need to update the app.
+- Go to the display board machine. Open the start menu and click on KinectBoard Location. It is a short cut to the .exe file where you need to copy the files over.
+- Click on Kinectboard host and copy all the file from the flash drive over to this folder.
+- Restart the computer and make sure the update occured.
+
